@@ -137,9 +137,10 @@ func (r *Runner) Start(ctxt context.Context) error {
 		ctxt = context.Background()
 	}
 
-	// set user data dir, if not provided
+	// set user data dir, if not provided in non headless mode
+	_, isHeadless := r.opts["headless"]
 	_, ok = r.opts["user-data-dir"]
-	if !ok {
+	if !ok && !isHeadless {
 		r.opts["user-data-dir"], err = ioutil.TempDir(
 			DefaultUserDataTmpDir, fmt.Sprintf(DefaultUserDataDirPrefix, r.Port()),
 		)
