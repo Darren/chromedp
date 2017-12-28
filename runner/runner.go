@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
+	"net/url"
 	"os"
 	"os/exec"
 	"regexp"
@@ -13,9 +14,7 @@ import (
 	"sync"
 	"syscall"
 
-	"net/url"
-
-	"github.com/knq/chromedp/client"
+	"github.com/chromedp/chromedp/client"
 )
 
 const (
@@ -190,7 +189,7 @@ func (r *Runner) Start(ctxt context.Context) error {
 	return nil
 }
 
-// Shutdown shuts down and all the Chrome tabs.
+// Shutdown shuts down the Chrome process.
 func (r *Runner) Shutdown(ctxt context.Context, opts ...client.Option) error {
 	var err error
 
