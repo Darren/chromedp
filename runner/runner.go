@@ -9,7 +9,6 @@ import (
 	"os"
 	"os/exec"
 	"regexp"
-	"runtime"
 	"sync"
 	"syscall"
 
@@ -221,7 +220,7 @@ func (r *Runner) Shutdown(ctxt context.Context, opts ...client.Option) error {
 	// closed, so send SIGTERM.
 	//
 	// TODO: add other behavior here for more process options on shutdown?
-	if runtime.GOOS == "darwin" && r.cmd != nil && r.cmd.Process != nil {
+	if r.cmd != nil && r.cmd.Process != nil {
 		return r.cmd.Process.Signal(syscall.SIGTERM)
 	}
 
