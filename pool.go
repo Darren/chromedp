@@ -68,9 +68,7 @@ func (p *Pool) Allocate(ctxt context.Context, opts ...runner.CommandLineOption) 
 	p.debugf("pool allocating %d", r.port)
 
 	// create runner
-	r.r, err = runner.New(append([]runner.CommandLineOption{
-		runner.HeadlessPathPort("", r.port),
-	}, opts...)...)
+	r.r, err = runner.New(opts...)
 	if err != nil {
 		defer r.Release()
 		p.errorf("pool could not allocate runner on port %d: %v", r.port, err)
