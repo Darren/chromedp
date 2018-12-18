@@ -8,10 +8,10 @@ import (
 
 var (
 	// DefaultReadBufferSize is the default maximum read buffer size.
-	DefaultReadBufferSize = 25 * 1024 * 1024
+	DefaultReadBufferSize = 1024 * 1024
 
 	// DefaultWriteBufferSize is the default maximum write buffer size.
-	DefaultWriteBufferSize = 10 * 1024 * 1024
+	DefaultWriteBufferSize = 512 * 1024
 )
 
 // Transport is the common interface to send/receive messages to a target.
